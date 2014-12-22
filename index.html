@@ -61,21 +61,12 @@
 
 				dataStore.on('send',function(data){
 					var lat = data.value.lat, lng = data.value.lon;
-
-					//var img = '';
-					/*if(data.value.type == 'ryo'){
-
-					}else if(data.value.type == 'maro'){
-
-					}
-					*/
-
 					map.setCenter(lat,lng);
 					map.addMarker({
 						lat: lat,
 						lng: lng,
 						title:"Member",
-			         //	icon:img,
+			        
 						infoWindow:{
 							content:"<p>Memberのメンバーは<br/>ココだよ!</p>"
 						}
