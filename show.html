@@ -13,7 +13,7 @@
     <script src="./gmaps.js"></script>
     <script src="http://cdn.mlkcca.com/v0.2.8/milkcocoa.js"></script>
     <script>
-        var dataStore = new MilkCocoa("https://{YOUR APP ID}.mlkcca.com").dataStore('chat');
+         var dataStore = new MilkCocoa("https://io-mi3vmrabx.mlkcca.com").dataStore('chat');
  
         window.onload = function(){
  
@@ -29,21 +29,21 @@
             dataStore.on('send', function(data) {
                 var lat = data.value.lat, lng = data.value.lon;
  
- //               var img = '';
- //               if(data.value.type == 'ryo'){
- //                   img = 'http://i.gyazo.com/7502afdcf0bbcc1f6d8f3d85e66616f6.png';
- //               }else if(data.value.type == 'maro'){
- //                   img = 'http://i.gyazo.com/f7b2e1dac073595c3e53a260413aec14.png';
- //              }
+                var img = '';
+                if(data.value.type == 'ryo'){
+                    img = 'Swift_Autumn.png';
+                }else if(data.value.type == 'maro'){
+                    img = 'twitter_circle.png';
+                }
  
                 map.setCenter(lat, lng);
                 map.addMarker({
                     lat: lat,
                     lng: lng,
-                    title: "Member",
-//                    icon: img,
+                    title: "LIG社員",
+                    icon: img,
                     infoWindow: {
-                        content: "<p>Memberは<br/>ココだよ!</p>"
+                        content: "<p>LIG社員は<br/>ココだよ!</p>"
                     }
                 });
                 console.log('recieve',data.value);
