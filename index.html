@@ -25,6 +25,10 @@
             type = 'maro';
             alert("まろしとして位置情報を送信します。");
         }
+        function clickEvent(){
+            var textArea = document.getElementById("msg");
+            var text = textArea.value;
+        }
  
         window.onload = function(){
  
@@ -35,6 +39,7 @@
                             lat : position.coords.latitude,
                             lon : position.coords.longitude,
                             type: type
+                            txt : text
                         });
                     },
                     error: function(error) {
@@ -60,7 +65,7 @@
             });
  
             dataStore.on('send', function(data) {
-                var lat = data.value.lat, lng = data.value.lon;
+                var lat = data.value.lat, lng = data.value.lon,txt = data.value.txt;
  
  
                 map.setCenter(lat, lng);
@@ -69,7 +74,7 @@
                     lng: lng,
                     title: "LIG社員",
                     infoWindow: {
-                        content: "<p>LIG社員は<br/>ココだよ!</p>"
+                        content: txt
                     }
                 });
                 console.log('recieve',data.value);
@@ -86,5 +91,7 @@
 <button onClick="maro()">
     まろし
 </button>
+<textarea name = "" id = "msg" cols = "30" rows = "4"></textarea>
+<button name = "button" onClick="clickEvent()">send message!</button>
 </body>
 </html>
