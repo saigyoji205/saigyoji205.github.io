@@ -17,6 +17,7 @@
         var dataStore = new MilkCocoa("https://io-mi3vmrabx.mlkcca.com").dataStore('chat');
  
         var type = '';
+        var text = '';
         function ryo(){
             type = 'ryo';
             alert("りょうちんとして位置情報を送信します。");
@@ -27,7 +28,7 @@
         }
         function clickEvent(){
             var textArea = document.getElementById("msg");
-            var text = textArea.value;
+            text = textArea.value;
         }
  
         window.onload = function(){
