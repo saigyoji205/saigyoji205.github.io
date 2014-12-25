@@ -27,14 +27,7 @@
             });
  
             dataStore.on('send', function(data) {
-                var lat = data.value.lat, lng = data.value.lon;
- 
-                var img = '';
-                if(data.value.type == 'ryo'){
-                    img = 'Swift_Autumn.png';
-                }else if(data.value.type == 'maro'){
-                    img = 'twitter_circle.png';
-                }
+                var lat = data.value.lat, lng = data.value.lon ,txt = data.value.txt;
  
                 map.setCenter(lat, lng);
                 map.addMarker({
@@ -43,7 +36,7 @@
                     title: "LIG社員",
                     icon: img,
                     infoWindow: {
-                        content: "<p>LIG社員は<br/>ココだよ!</p>"
+                        content: txt.toString()
                     }
                 });
                 console.log('recieve',data.value);
