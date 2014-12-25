@@ -62,19 +62,12 @@
             dataStore.on('send', function(data) {
                 var lat = data.value.lat, lng = data.value.lon;
  
-                var img = '';
-                if(data.value.type == 'ryo'){
-                    img = 'Swift_Autumn.png';
-                }else if(data.value.type == 'maro'){
-                    img = 'twitter_circle.png';
-                }
  
                 map.setCenter(lat, lng);
                 map.addMarker({
                     lat: lat,
                     lng: lng,
                     title: "LIG社員",
-                    icon: img,
                     infoWindow: {
                         content: "<p>LIG社員は<br/>ココだよ!</p>"
                     }
