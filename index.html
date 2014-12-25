@@ -15,7 +15,7 @@
     <script src="http://cdn.mlkcca.com/v0.2.8/milkcocoa.js"></script>
     <script>
         var dataStore = new MilkCocoa("https://io-mi3vmrabx.mlkcca.com").dataStore('chat');
- 
+        var textArea,board;
         var type = '';
         function ryo(){
             type = 'ryo';
@@ -27,6 +27,9 @@
         }
  
         window.onload = function(){
+
+            textArea = document.getElementById("msg");
+            board = document.getElementById("board");
  
             setInterval(function(){
                 GMaps.geolocate({
@@ -83,6 +86,26 @@
             });
  
         };
+        function clickEvent(){
+            var text = textArea.value;
+            sendText(text);
+        }
+        function sendText (text) {
+            chatDataStore.push({message:text},function(data){
+                console.log("送信完了!");
+                textArea.value = "";
+            });
+        }
+
+        chatDataStore.on("push",function(data){
+            addText(data.value.message);
+        });
+
+        function addText(text){
+            var msgDom = document.createElement("li");
+            msgDom.innerHTML = text;
+            board.insertBefore(msgDom,board.firstChild);
+        }
     </script>
 </head>
 <body>
@@ -93,5 +116,8 @@
 <button onClick="maro()">
     まろし
 </button>
+<textarea name = "" id = "msg" cols = "30" rows="4"></textarea>
+<button name = "button" onClick="clickEvent()">send message!</button>
+<ul id = "board"></ul>
 </body>
 </html>
